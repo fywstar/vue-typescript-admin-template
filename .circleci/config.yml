@@ -28,4 +28,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: yarn test:unit
+
+      - store_test_results:
+          path: test-results
+
       - run: yarn lint && yarn build:prod
